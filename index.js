@@ -51,10 +51,12 @@ app.use((req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`✅ Avatar Backend Server is running on port ${PORT}`);
-    console.log(`📍 API endpoint: http://localhost:${PORT}/api`);
-    console.log(`💚 Health check: http://localhost:${PORT}/health`);
-});
+if (process.env.NODE_ENV !== 'production') {
+    app.listen(PORT, () => {
+        console.log(`✅ Avatar Backend Server is running on port ${PORT}`);
+        console.log(`📍 API endpoint: http://localhost:${PORT}/api`);
+        console.log(`💚 Health check: http://localhost:${PORT}/health`);
+    });
+}
 
 module.exports = app;
